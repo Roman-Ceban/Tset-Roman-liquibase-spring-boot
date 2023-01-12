@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -72,14 +73,15 @@ public class UserController {
         userRepository.saveAll(users);
         return "User detail page.";
     }
+
     @GetMapping()
-    public ResponseEntity findAll(){
+    public ResponseEntity findAll() {
         List<Users> users = userService.findAll();
         return ResponseEntity.status(HttpStatus.CREATED).body(users);
     }
 
     @GetMapping("/populate")
-    public void populateFromUrl(){
+    public void populateFromUrl() {
         getUser();
     }
 
