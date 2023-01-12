@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Tset-Roman-liquibase-spring-boot.iml" filepath="$PROJECT_DIR$/.idea/Tset-Roman-liquibase-spring-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-liquibase-postgres-main-master_2345345345234234/liquibase-demo.iml" filepath="$PROJECT_DIR$/springboot-liquibase-postgres-main-master_2345345345234234/liquibase-demo.iml" />
+    </modules>
+  </component>
+</project>

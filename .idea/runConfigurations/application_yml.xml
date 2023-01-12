@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="application.yml" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" editBeforeRun="true" singleton="false" path="$PROJECT_DIR$/springboot-liquibase-postgres-main-master_2345345345234234/src/main/resources/application.yml">
+    <method v="2" />
+  </configuration>
+</component>
