@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="05" author="address">
+        <createTable tableName="address"
+                     remarks="A table to contain all the address">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="true" primaryKey="true"/>
+            </column>
+            <column name="street" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="city" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="suite" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zipcode" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="geo_id" type="int">
+                <constraints nullable="true" foreignKeyName="factory_key" />
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

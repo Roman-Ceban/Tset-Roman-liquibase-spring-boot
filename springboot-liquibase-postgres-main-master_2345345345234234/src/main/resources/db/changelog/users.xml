@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="01" author="users">
+        <createTable tableName="users"
+                     remarks="A table to contain all the users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="int">
+                <constraints nullable="true" foreignKeyName="factory_key1" />
+            </column>
+            <column name="company" type="int">
+                <constraints nullable="true" foreignKeyName="factory_key2" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
