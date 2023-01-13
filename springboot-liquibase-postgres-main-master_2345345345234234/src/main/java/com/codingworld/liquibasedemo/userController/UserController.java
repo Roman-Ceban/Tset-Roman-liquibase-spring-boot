@@ -79,17 +79,17 @@ public class UserController {
         List<Users> users = userService.findAll();
         return ResponseEntity.status(HttpStatus.CREATED).body(users);
     }
-
     @GetMapping("/populate")
     public void populateFromUrl() {
         getUser();
     }
 
     @PostMapping("/user-create")
-    public Users createUser(@RequestBody Users user){
+    public Users ResponseEntity(@RequestBody Users user){
         userService.saveUser(user);
         return userService.saveUser(user);
     }
+
 
     @GetMapping("user-delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id){
