@@ -18,3 +18,5 @@ spring:
   liquibase:
     enabled: true
 
+users:
+  uri: http://jsonplaceholder.typicode.com/users

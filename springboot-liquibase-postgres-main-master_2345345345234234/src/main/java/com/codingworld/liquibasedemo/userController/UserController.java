@@ -1,5 +1,6 @@
 package com.codingworld.liquibasedemo.userController;
 
+import com.codingworld.liquibasedemo.configuration.AppProperties;
 import com.codingworld.liquibasedemo.model.Address;
 import com.codingworld.liquibasedemo.model.Company;
 import com.codingworld.liquibasedemo.model.Geo;
@@ -9,13 +10,10 @@ import com.codingworld.liquibasedemo.service.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -29,18 +27,22 @@ public class UserController {
     private final ObjectMapper objectMapper;
     private final UserRepository userRepository;
 
-    public UserController(ObjectMapper objectMapper, UserRepository userRepository, UsersService userService) {
+    private final AppProperties appProperties;
+
+    public UserController(ObjectMapper objectMapper, UserRepository userRepository, UsersService userService, AppProperties appProperties) {
         this.objectMapper = objectMapper;
         this.userRepository = userRepository;
         this.userService = userService;
+        this.appProperties = appProperties;
     }
 
     @ResponseBody
     private String getUser() {
-        String uri = "https://jsonplaceholder.typicode.com/users/1";
+
+
         RestTemplate restTemplate = new RestTemplate();
 
-        Users user = restTemplate.getForObject(uri, Users.class);
+        Users user = restTemplate.getForObject(appProperties.getUri(), Users.class);
         System.out.println("User: " + user);
         System.out.println("Userid: " + user.getId());
         System.out.println("Name: " + user.getName());
@@ -67,7 +69,7 @@ public class UserController {
                 + company.getBs()
         );
 
-        ResponseEntity<Object[]> response = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/users", Object[].class);
+        ResponseEntity<Object[]> response = restTemplate.getForEntity(appProperties.getUri(), Object[].class);
 
         List<Users> users = Arrays.stream(response.getBody())
                 .map(obj -> objectMapper.convertValue(obj, Users.class))
@@ -77,50 +79,43 @@ public class UserController {
         return "User detail page.";
     }
 
-    @GetMapping()
-    public ResponseEntity findAll() {
-        List<Users> users = userService.findAll();
-        return ResponseEntity.status(HttpStatus.CREATED).body(users);
+    @PostMapping
+    public ResponseEntity<?> addUser(@RequestBody Users user) {
+        return new ResponseEntity<>(userRepository.save(user).getId(), HttpStatus.CREATED);
+
     }
 
-    @GetMapping("/populate")
-    public void populateFromUrl() {
-        getUser();
+    @GetMapping
+    public List<Users> getAllUsers() {
+        List<Users> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
+        return users;
     }
 
-    @PostMapping("/user-create")
-    public Users createUser(@RequestBody Users user){
-        userService.saveUser(user);
-        return userService.saveUser(user);
+
+    @PutMapping
+    public ResponseEntity<String> updateUser(@RequestBody Users user) {
+        if (userRepository.existsById(user.getId())) {
+            userRepository.save(user);
+            return new ResponseEntity<>("updated", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("user not found", HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("user-delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id){
-        userService.deleteById(id);
-        return "redirect:/users";
+    @GetMapping("/{id}")
+    public Users getUserById(@PathVariable("id") Integer id) {
+        return userRepository.findById(id).stream().findFirst().get();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUserById(@PathVariable("id") Integer id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return new ResponseEntity<>("deleted", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("not found", HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") Integer id, Model model){
-        Users user = userService.findById(id);
-        model.addAttribute("user", user);
-        return "user-update";
-    }
-
-    @PostMapping("/user-update")
-    public String updateUser(Users user){
-        userService.saveUser(user);
-        return "redirect:/users";
-    }
-
-    @DeleteMapping("/user/{id}")
-    public String delete(@PathVariable("id") Integer id){
-        userRepository.deleteById(id);
-        return "deleted";
-    }
 }
-
-
 
 
 
