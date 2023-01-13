@@ -1,4 +1,4 @@
-package com.codingworld.liquibasedemo.userController;
+package com.codingworld.liquibasedemo.web;
 
 import com.codingworld.liquibasedemo.configuration.AppProperties;
 import com.codingworld.liquibasedemo.model.Address;
@@ -8,6 +8,8 @@ import com.codingworld.liquibasedemo.repository.UserRepository;
 import com.codingworld.liquibasedemo.model.Users;
 import com.codingworld.liquibasedemo.service.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    Logger log = LoggerFactory.getLogger(UserController.class);
+
 
     private final UsersService userService;
     private final ObjectMapper objectMapper;
@@ -33,57 +38,50 @@ public class UserController {
         this.appProperties = appProperties;
     }
 
-    @ResponseBody
-    private String getUser() {
+    @GetMapping("/populate")
+    private ResponseEntity<Void> getUser() {
 
 
         RestTemplate restTemplate = new RestTemplate();
 
         Users user = restTemplate.getForObject(appProperties.getUri(), Users.class);
-        System.out.println("User: " + user);
-        System.out.println("Userid: " + user.getId());
-        System.out.println("Name: " + user.getName());
-        System.out.println("Username: " + user.getUsername());
-        System.out.println("Email: " + user.getEmail());
+        log.debug("User: {}", user);
+        log.debug("Userid:{}", user.getId());
+        log.debug("Name:{}", user.getName());
+        log.debug("Username{}", user.getUsername());
+        log.debug("Email:{}", user.getEmail());
 
         Address address = user.getAddress();
-        System.out.println("Address: "
-                + address.getStreet() + ", "
-                + address.getCity() + ", "
-                + address.getZipcode()
-        );
+        log.debug("Address:{}", address.getStreet(),
+                address.getCity(), address.getZipcode());
 
         Geo geo = address.getGeo();
-        System.out.println("Geo Lat: "
-                + geo.getLat() + ", Geo Lng: "
-                + geo.getLng()
-        );
+        log.debug("Geo Lat:{}", geo.getLat());
+        log.debug("Geo Lng:{}", geo.getLng());
 
         Company company = user.getCompany();
-        System.out.println("Company: "
-                + company.getName() + ", "
-                + company.getCatchPhrase() + ", "
-                + company.getBs()
-        );
+        log.debug("Company:{}", company.getName(),
+                company.getCatchPhrase(),
+                company.getBs());
 
         ResponseEntity<Object[]> response = restTemplate.getForEntity(appProperties.getUri(), Object[].class);
-
         List<Users> users = Arrays.stream(response.getBody())
                 .map(obj -> objectMapper.convertValue(obj, Users.class))
                 .collect(Collectors.toList());
         System.out.println(users);
         userRepository.saveAll(users);
-        return "User detail page.";
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody Users user) {
-        return new ResponseEntity<>(userRepository.save(user).getId(), HttpStatus.CREATED);
+    public ResponseEntity<Users> addUser(@RequestBody Users user) {
+        return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
 
     }
 
     @GetMapping
     public List<Users> getAllUsers() {
+        log.debug("GET request all users.");
         List<Users> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add);
         return users;
@@ -103,6 +101,7 @@ public class UserController {
     public Users getUserById(@PathVariable("id") Integer id) {
         return userRepository.findById(id).stream().findFirst().get();
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUserById(@PathVariable("id") Integer id) {
         if (userRepository.existsById(id)) {
