@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -74,50 +75,43 @@ public class UserController {
         return "User detail page.";
     }
 
-    @GetMapping()
-    public ResponseEntity findAll() {
-        List<Users> users = userService.findAll();
-        return ResponseEntity.status(HttpStatus.CREATED).body(users);
-    }
-    @GetMapping("/populate")
-    public void populateFromUrl() {
-        getUser();
+    @PostMapping
+    public ResponseEntity<?> addUser(@RequestBody Users user) {
+        return new ResponseEntity<>(userRepository.save(user).getId(), HttpStatus.CREATED);
+
     }
 
-    @PostMapping("/user-create")
-    public Users ResponseEntity(@RequestBody Users user){
-        userService.saveUser(user);
-        return userService.saveUser(user);
+    @GetMapping
+    public List<Users> getAllUsers() {
+        List<Users> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
+        return users;
     }
 
 
-    @GetMapping("user-delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id){
-        userService.deleteById(id);
-        return "redirect:/users";
+    @PutMapping
+    public ResponseEntity<String> updateUser(@RequestBody Users user) {
+        if (userRepository.existsById(user.getId())) {
+            userRepository.save(user);
+            return new ResponseEntity<>("updated", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("user not found", HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") Integer id, Model model){
-        Users user = userService.findById(id);
-        model.addAttribute("user", user);
-        return "user-update";
+    @GetMapping("/{id}")
+    public Users getUserById(@PathVariable("id") Integer id) {
+        return userRepository.findById(id).stream().findFirst().get();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUserById(@PathVariable("id") Integer id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return new ResponseEntity<>("deleted", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("not found", HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/user-update")
-    public String updateUser(Users user){
-        userService.saveUser(user);
-        return "redirect:/users";
-    }
-
-    @DeleteMapping("/user/{id}")
-    public String delete(@PathVariable("id") Integer id){
-        userRepository.deleteById(id);
-        return "deleted";
-    }
 }
-
-
 
 
 
