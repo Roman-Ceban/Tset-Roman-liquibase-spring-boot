@@ -32,3 +32,103 @@
 2023-01-13 11:28:49,593 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-01-13 11:28:49,595 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2023-01-13 11:28:49,597 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-13 11:45:29,997 INFO org.springframework.boot.StartupInfoLogger [main] Starting LiquibaseDemoApplication using Java 19.0.1 on WIN-2B8CL7RM1PN with PID 10304 (C:\Users\User\Desktop\Tset-Roman-liquibase-spring-boot\springboot-liquibase-postgres-main-master_2345345345234234\target\classes started by User in C:\Users\User\Desktop\Tset-Roman-liquibase-spring-boot)
+2023-01-13 11:45:29,999 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.6.4, Spring v5.3.16
+2023-01-13 11:45:30,000 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-13 11:45:30,468 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-13 11:45:30,502 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interfaces.
+2023-01-13 11:45:30,845 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2023-01-13 11:45:30,857 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2023-01-13 11:45:30,858 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-13 11:45:30,858 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-01-13 11:45:30,908 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-13 11:45:30,908 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 873 ms
+2023-01-13 11:45:30,930 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-13 11:45:31,039 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-13 11:45:31,048 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2023-01-13 11:45:31,275 INFO liquibase.logging.core.JavaLogger [main] Set default schema name to public
+2023-01-13 11:45:31,324 INFO liquibase.logging.core.JavaLogger [main] Successfully acquired change log lock
+2023-01-13 11:45:31,603 INFO liquibase.logging.core.JavaLogger [main] Reading from public.databasechangelog
+2023-01-13 11:45:31,633 INFO liquibase.logging.core.JavaLogger [main] Successfully released change log lock
+2023-01-13 11:45:31,695 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-13 11:45:31,723 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.5.Final
+2023-01-13 11:45:31,813 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-13 11:45:31,881 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-13 11:45:32,251 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-13 11:45:32,257 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-13 11:45:32,467 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-13 11:45:32,643 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2023-01-13 11:45:32,656 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2023-01-13 11:45:32,663 INFO org.springframework.boot.StartupInfoLogger [main] Started LiquibaseDemoApplication in 3.043 seconds (JVM running for 3.587)
+2023-01-13 13:13:02,896 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58m1s249ms434µs200ns).
+2023-01-13 13:26:06,042 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-13 13:26:06,043 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-13 13:26:06,046 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-13 14:16:45,458 INFO org.springframework.boot.StartupInfoLogger [main] Starting LiquibaseDemoApplication using Java 19.0.1 on WIN-2B8CL7RM1PN with PID 10748 (C:\Users\User\Desktop\Tset-Roman-liquibase-spring-boot\springboot-liquibase-postgres-main-master_2345345345234234\target\classes started by User in C:\Users\User\Desktop\Tset-Roman-liquibase-spring-boot)
+2023-01-13 14:16:45,460 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.6.4, Spring v5.3.16
+2023-01-13 14:16:45,461 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-13 14:16:45,867 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-13 14:16:45,901 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interfaces.
+2023-01-13 14:16:46,228 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2023-01-13 14:16:46,243 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2023-01-13 14:16:46,243 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-13 14:16:46,243 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-01-13 14:16:46,300 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-13 14:16:46,300 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 806 ms
+2023-01-13 14:16:46,321 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-13 14:16:46,430 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-13 14:16:46,438 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2023-01-13 14:16:46,628 INFO liquibase.logging.core.JavaLogger [main] Set default schema name to public
+2023-01-13 14:16:46,672 INFO liquibase.logging.core.JavaLogger [main] Successfully acquired change log lock
+2023-01-13 14:16:46,957 INFO liquibase.logging.core.JavaLogger [main] Reading from public.databasechangelog
+2023-01-13 14:16:46,987 INFO liquibase.logging.core.JavaLogger [main] Successfully released change log lock
+2023-01-13 14:16:47,049 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-13 14:16:47,078 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.5.Final
+2023-01-13 14:16:47,162 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-13 14:16:47,237 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-13 14:16:47,561 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-13 14:16:47,567 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-13 14:16:47,777 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-13 14:16:47,954 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2023-01-13 14:16:47,967 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2023-01-13 14:16:47,973 INFO org.springframework.boot.StartupInfoLogger [main] Started LiquibaseDemoApplication in 2.866 seconds (JVM running for 3.405)
+2023-01-13 14:17:26,958 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-13 14:17:26,958 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-4] Initializing Servlet 'dispatcherServlet'
+2023-01-13 14:17:26,959 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-4] Completed initialization in 0 ms
+2023-01-13 14:18:54,376 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-13 14:18:54,377 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-13 14:18:54,380 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-01-13 14:18:57,851 INFO org.springframework.boot.StartupInfoLogger [main] Starting LiquibaseDemoApplication using Java 19.0.1 on WIN-2B8CL7RM1PN with PID 7812 (C:\Users\User\Desktop\Tset-Roman-liquibase-spring-boot\springboot-liquibase-postgres-main-master_2345345345234234\target\classes started by User in C:\Users\User\Desktop\Tset-Roman-liquibase-spring-boot)
+2023-01-13 14:18:57,853 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.6.4, Spring v5.3.16
+2023-01-13 14:18:57,853 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-13 14:18:58,263 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-13 14:18:58,296 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interfaces.
+2023-01-13 14:18:58,630 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2023-01-13 14:18:58,636 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2023-01-13 14:18:58,637 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-13 14:18:58,637 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.58]
+2023-01-13 14:18:58,697 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-13 14:18:58,697 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 808 ms
+2023-01-13 14:18:58,720 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-13 14:18:58,827 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-13 14:18:58,835 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2023-01-13 14:18:59,015 INFO liquibase.logging.core.JavaLogger [main] Set default schema name to public
+2023-01-13 14:18:59,062 INFO liquibase.logging.core.JavaLogger [main] Successfully acquired change log lock
+2023-01-13 14:18:59,333 INFO liquibase.logging.core.JavaLogger [main] Reading from public.databasechangelog
+2023-01-13 14:18:59,362 INFO liquibase.logging.core.JavaLogger [main] Successfully released change log lock
+2023-01-13 14:18:59,423 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-13 14:18:59,450 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.5.Final
+2023-01-13 14:18:59,531 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-13 14:18:59,599 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-13 14:18:59,925 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-13 14:18:59,931 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-13 14:19:00,134 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-13 14:19:00,309 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2023-01-13 14:19:00,327 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2023-01-13 14:19:00,334 INFO org.springframework.boot.StartupInfoLogger [main] Started LiquibaseDemoApplication in 2.826 seconds (JVM running for 3.347)
+2023-01-13 14:19:07,268 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-13 14:19:07,268 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-01-13 14:19:07,269 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Completed initialization in 1 ms
+2023-01-13 14:23:31,194 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-13 14:23:31,196 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-01-13 14:23:31,198 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

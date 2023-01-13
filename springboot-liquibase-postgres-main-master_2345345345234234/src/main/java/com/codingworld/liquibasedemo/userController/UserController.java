@@ -1,5 +1,6 @@
 package com.codingworld.liquibasedemo.userController;
 
+import com.codingworld.liquibasedemo.configuration.AppProperties;
 import com.codingworld.liquibasedemo.model.Address;
 import com.codingworld.liquibasedemo.model.Company;
 import com.codingworld.liquibasedemo.model.Geo;
@@ -9,14 +10,10 @@ import com.codingworld.liquibasedemo.service.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,18 +24,22 @@ public class UserController {
     private final ObjectMapper objectMapper;
     private final UserRepository userRepository;
 
-    public UserController(ObjectMapper objectMapper, UserRepository userRepository, UsersService userService) {
+    private final AppProperties appProperties;
+
+    public UserController(ObjectMapper objectMapper, UserRepository userRepository, UsersService userService, AppProperties appProperties) {
         this.objectMapper = objectMapper;
         this.userRepository = userRepository;
         this.userService = userService;
+        this.appProperties = appProperties;
     }
 
     @ResponseBody
     private String getUser() {
-        String uri = "https://jsonplaceholder.typicode.com/users/1";
+
+
         RestTemplate restTemplate = new RestTemplate();
 
-        Users user = restTemplate.getForObject(uri, Users.class);
+        Users user = restTemplate.getForObject(appProperties.getUri(), Users.class);
         System.out.println("User: " + user);
         System.out.println("Userid: " + user.getId());
         System.out.println("Name: " + user.getName());
@@ -65,7 +66,7 @@ public class UserController {
                 + company.getBs()
         );
 
-        ResponseEntity<Object[]> response = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/users", Object[].class);
+        ResponseEntity<Object[]> response = restTemplate.getForEntity(appProperties.getUri(), Object[].class);
 
         List<Users> users = Arrays.stream(response.getBody())
                 .map(obj -> objectMapper.convertValue(obj, Users.class))
